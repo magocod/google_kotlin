@@ -3,8 +3,10 @@ package com.example.diceroller
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.IdRes
 
 /**
  * This activity allows the user to roll a dice and view the result
@@ -17,23 +19,77 @@ class MainActivity : AppCompatActivity() {
 
         val rollButton: Button = findViewById(R.id.button)
         rollButton.setOnClickListener {
-            Toast.makeText(this, "Dice Rolled!", Toast.LENGTH_SHORT).show()
             rollDice()
         }
+
+        // Do a dice roll when the app starts
+        rollDice()
+    }
+
+    /**
+     * Update
+     * - the ImageView with the correct drawable resource ID
+     * - the ImageView content description
+     */
+    private fun setDiceImage(diceRoll: Int, imageViewId: Int)
+    {
+        val diceImage: ImageView = findViewById(imageViewId)
+        val drawableResource = when (diceRoll) {
+            1 -> R.drawable.dice_1
+            2 -> R.drawable.dice_2
+            3 -> R.drawable.dice_3
+            4 -> R.drawable.dice_4
+            5 -> R.drawable.dice_5
+            else -> R.drawable.dice_6
+        }
+        diceImage.setImageResource(drawableResource)
+        diceImage.contentDescription = diceRoll.toString()
     }
 
     /**
      * Roll the dice and update the screen with the result.
      */
     private fun rollDice() {
+        // first dice (medium)
         val dice = Dice(6)
         val diceRoll = dice.roll()
+        // second dice (small)
+        val diceRoll2 = Dice(6).roll()
+
         // Update the screen with the dice roll
-        val resultTextView: TextView = findViewById(R.id.textView)
-        resultTextView.text = diceRoll.toString()
+        setDiceImage(diceRoll, R.id.imageView) // medium dice
+        setDiceImage(diceRoll2, R.id.imageView2) // small dice
         val secondResultTextView: TextView = findViewById(R.id.textView2)
-        secondResultTextView.text = Dice(6).roll().toString()
+        secondResultTextView.text = diceRoll2.toString()
+
+        Toast.makeText(this, "Dice Rolled! $diceRoll", Toast.LENGTH_SHORT).show()
     }
+
+
+    /**
+     * Roll the dice and update the screen with the result.
+     */
+//    private fun rollDice() {
+//        val dice = Dice(6)
+//        val diceRoll = dice.roll()
+//        // Update the screen with the dice roll
+//        val diceImage: ImageView = findViewById(R.id.imageView)
+//        val drawableResource = when (diceRoll) {
+//            1 -> R.drawable.dice_1
+//            2 -> R.drawable.dice_2
+//            3 -> R.drawable.dice_3
+//            4 -> R.drawable.dice_4
+//            5 -> R.drawable.dice_5
+//            else -> R.drawable.dice_6
+//        }
+//        diceImage.setImageResource(drawableResource)
+//        diceImage.contentDescription = diceRoll.toString()
+//
+//        Toast.makeText(this, "Dice Rolled! $diceRoll", Toast.LENGTH_SHORT).show()
+//
+//        val secondResultTextView: TextView = findViewById(R.id.textView2)
+//        secondResultTextView.text = Dice(6).roll().toString()
+//    }
 }
 
 class Dice(private val numSides: Int) {
