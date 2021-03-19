@@ -1,5 +1,5 @@
 fun main() {
-    val myFirstDice = Dice(8)
+    val myFirstDice = Dice(6)
     val rollResult = myFirstDice.roll()
     val luckyNumber = 4
 
@@ -16,7 +16,7 @@ fun main() {
         else -> {
             print("Sorry your number is: $rollResult")
         }
-    }
+   }
 }
 
 class Dice(val numSides: Int) {
