@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/calculator_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/paypal_commission_calculator"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/commissions_section"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/paypal_commissions"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/calculator_name" />
+
+    <EditText
+        android:id="@+id/commission_value"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/commission_value"
+        android:text="@string/_5_4"
+        android:inputType="numberDecimal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/commissions_section"
+        android:autofillHints="" />
+
+    <TextView
+        android:id="@+id/commission_sum_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/more"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:labelFor="@id/commission_value"
+        app:layout_constraintStart_toEndOf="@+id/commission_value"
+        app:layout_constraintTop_toBottomOf="@id/commissions_section" />
+
+    <EditText
+        android:id="@+id/commission_extra_value"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:inputType="numberDecimal"
+        android:hint="@string/_0_30"
+        android:text="@string/_0_30"
+        app:layout_constraintStart_toEndOf="@+id/commission_sum_message"
+        app:layout_constraintTop_toBottomOf="@id/commissions_section" />
+
+    <TextView
+        android:id="@+id/commission_extra_value_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/usds"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/commission_extra_value"
+        app:layout_constraintTop_toBottomOf="@id/commissions_section" />
+
+    <TextView
+        android:id="@+id/calculator_name_receive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/paypal_receiving_calculator"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/commission_value" />
+
+    <TextView
+        android:id="@+id/receive_message_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/to_receive"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:labelFor="@id/receive_input"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/calculator_name_receive" />
+
+    <EditText
+        android:id="@+id/receive_input"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:inputType="numberDecimal"
+        android:text="@string/_0"
+        app:layout_constraintStart_toEndOf="@+id/receive_message_1"
+        app:layout_constraintTop_toBottomOf="@id/calculator_name_receive" />
+
+    <TextView
+        android:id="@+id/receive_message_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/usds"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:labelFor="@id/receive_input"
+        app:layout_constraintStart_toEndOf="@+id/receive_input"
+        app:layout_constraintTop_toBottomOf="@id/calculator_name_receive" />
+
+    <TextView
+        android:id="@+id/receive_message_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/you_have_to_send"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/receive_message_1" />
+
+    <EditText
+        android:id="@+id/receive_computed_input_1"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:inputType="numberDecimal"
+        android:enabled="false"
+        android:hint="@string/_0"
+        android:text="@string/_0"
+        app:layout_constraintStart_toEndOf="@+id/receive_message_4"
+        app:layout_constraintTop_toBottomOf="@id/receive_message_1" />
+
+    <TextView
+        android:id="@+id/receive_message_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/usds"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:labelFor="@id/receive_input"
+        app:layout_constraintStart_toEndOf="@+id/receive_computed_input_1"
+        app:layout_constraintTop_toBottomOf="@id/receive_message_1" />
+
+    <TextView
+        android:id="@+id/receive_message_6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/the_commission_is_from"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/receive_message_4" />
+
+    <EditText
+        android:id="@+id/receive_computed_input_2"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:inputType="numberDecimal"
+        android:hint="@string/_0"
+        android:text="@string/_0"
+        android:enabled="false"
+        app:layout_constraintStart_toEndOf="@+id/receive_message_6"
+        app:layout_constraintTop_toBottomOf="@id/receive_message_4" />
+
+    <TextView
+        android:id="@+id/receive_message_7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/usds"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:labelFor="@id/receive_input"
+        app:layout_constraintStart_toEndOf="@+id/receive_computed_input_2"
+        app:layout_constraintTop_toBottomOf="@id/receive_message_4" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

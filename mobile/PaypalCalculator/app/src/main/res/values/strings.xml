@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Paypal Calculator</string>
+    <string name="paypal_commission_calculator">PayPal Commission Calculator</string>
+    <string name="paypal_commissions">PayPal Commissions</string>
+    <string name="_5_4">5.4</string>
+    <string name="more">% more $</string>
+    <string name="_0_30">0.30</string>
+    <string name="commission_value">commission value</string>
+    <string name="usds">USDs</string>
+    <string name="paypal_receiving_calculator">PayPal Receiving Calculator</string>
+    <string name="to_receive">To receive:</string>
+    <string name="_0">0</string>
+    <string name="you_have_to_send">You have to send:</string>
+    <string name="the_commission_is_from">The Commission is from:</string>
+</resources>
