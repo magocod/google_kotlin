@@ -27,6 +27,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.example.android.firebaseui_login_sample.databinding.FragmentMainBinding
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
@@ -51,6 +52,11 @@ class MainFragment : Fragment() {
         // TODO Remove the two lines below once observeAuthenticationState is implemented.
         binding.welcomeText.text = viewModel.getFactToDisplay(requireContext())
         binding.authButton.text = getString(R.string.login_btn)
+
+        binding.settingsBtn.setOnClickListener {
+//            val action = MainFragmentDirections.actionMainFragmentToSettingsFragment()
+            findNavController().navigate(R.id.action_mainFragment_to_settingsFragment)
+        }
 
         return binding.root
     }
@@ -99,6 +105,11 @@ class MainFragment : Fragment() {
                         AuthUI.getInstance().signOut(requireContext())
                     }
                 }
+                // If the user is not logged in, they should not be able to set any preferences,
+                // so navigate them to the login fragment
+                LoginViewModel.AuthenticationState.UNAUTHENTICATED -> findNavController().navigate(
+                    R.id.loginFragment
+                )
                 else -> {
                     binding.welcomeText.text = factToDisplay
 
