@@ -18,24 +18,23 @@ package com.example.android.architecture.blueprints.todoapp.tasks
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.android.architecture.blueprints.todoapp.Event
+import com.example.android.architecture.blueprints.todoapp.MainCoroutineRule
 import com.example.android.architecture.blueprints.todoapp.R
 import com.example.android.architecture.blueprints.todoapp.data.Task
 import com.example.android.architecture.blueprints.todoapp.data.source.FakeTestRepository
 import com.example.android.architecture.blueprints.todoapp.getOrAwaitValue
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.TestCoroutineDispatcher
-import kotlinx.coroutines.test.resetMain
-import kotlinx.coroutines.test.setMain
 import org.hamcrest.CoreMatchers.*
 import org.hamcrest.MatcherAssert.assertThat
-import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
+
+/**
+ * Unit tests for the implementation of [TasksViewModel]
+ */
 @ExperimentalCoroutinesApi
-//@RunWith(AndroidJUnit4::class)
 class TasksViewModelTest {
 
     // Subject under test
@@ -48,24 +47,27 @@ class TasksViewModelTest {
     @get:Rule
     var instantExecutorRule = InstantTaskExecutorRule()
 
-    val testDispatcher: TestCoroutineDispatcher = TestCoroutineDispatcher()
+    @get:Rule
+    var mainCoroutineRule = MainCoroutineRule()
 
-    @ExperimentalCoroutinesApi
-    @Before
-    fun setupDispatcher() {
-        Dispatchers.setMain(testDispatcher)
-    }
-
-    @ExperimentalCoroutinesApi
-    @After
-    fun tearDownDispatcher() {
-        Dispatchers.resetMain()
-        testDispatcher.cleanupTestCoroutines()
-    }
+//    @ExperimentalCoroutinesApi
+//    val testDispatcher: TestCoroutineDispatcher = TestCoroutineDispatcher()
+//
+//    @ExperimentalCoroutinesApi
+//    @Before
+//    fun setupDispatcher() {
+//        Dispatchers.setMain(testDispatcher)
+//    }
+//
+//    @ExperimentalCoroutinesApi
+//    @After
+//    fun tearDownDispatcher() {
+//        Dispatchers.resetMain()
+//        testDispatcher.cleanupTestCoroutines()
+//    }
 
     @Before
     fun setupViewModel() {
-//        tasksViewModel = TasksViewModel(ApplicationProvider.getApplicationContext())
         // We initialise the tasks to 3, with one active and two completed
         tasksRepository = FakeTestRepository()
         val task1 = Task("Title1", "Description1")
@@ -76,7 +78,6 @@ class TasksViewModelTest {
         tasksViewModel = TasksViewModel(tasksRepository)
     }
 
-
     @Test
     fun addNewTask_setsNewTaskEvent() {
         // When adding a new task
@@ -86,7 +87,6 @@ class TasksViewModelTest {
         val value = tasksViewModel.newTaskEvent.getOrAwaitValue()
 
         assertThat(value.getContentIfNotHandled(), not(nullValue()))
-
 
     }
 
